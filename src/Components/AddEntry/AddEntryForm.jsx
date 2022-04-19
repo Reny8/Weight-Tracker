@@ -1,25 +1,45 @@
 import React, { useState } from "react";
-
+import "./addEntryForm.css";
 const AddEntryForm = (props) => {
-    const [weight, setWeight] = useState(0);
-    const [date, setDate] = useState(" ");
+  const [weight, setWeight] = useState(0);
+  const [date, setDate] = useState(" ");
 
-    function handlesSubmit(event) {
-        event.preventDefault();
-        let newEntry = {
-            weight: weight,
-            date: date
-        }
-    props.addEntryProperty(newEntry)
-    }
+  function handlesSubmit(event) {
+    event.preventDefault();
+    let newEntry = {
+      weight: weight,
+      date: date,
+    };
+    props.addEntryProperty(newEntry);
+  }
 
   return (
-    <form onSubmit={handlesSubmit}>
-      <label>Weight</label>
-      <input type="number" value={weight} onChange ={(event)=> setWeight(parseFloat(event.target.value))}/>
-      <label>Date</label>
-      <input type="date" value={date} onChange={(event)=> setDate(event.target.value)}/>
-      <button type='submit'>Add</button>
+    <form onSubmit={handlesSubmit} className="form-grid">
+      <div className="form-group">
+        <label>Weight</label>
+        <input
+          type="number"
+          className="form-control"
+          value={weight}
+          onChange={(event) => setWeight(parseFloat(event.target.value))}
+        />
+      </div>
+      <div className="form-group">
+        <label>Date</label>
+        <input
+          type="date"
+          className="form-control"
+          value={date}
+          onChange={(event) => setDate(event.target.value)}
+        />
+      </div>
+      <button
+        type="submit"
+        class="btn btn-primary"
+        style={{ "margin-top": "1rem" }}
+      >
+        Add
+      </button>
     </form>
   );
 };
